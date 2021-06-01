@@ -1,0 +1,41 @@
+body{
+    margin: 0 auto;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: cursive;
+
+}
+
+h1{
+    color: lightcoral;
+}
+
+header{
+    margin-bottom: 10px;
+}
+
+header a{
+    text-decoration: none;
+    margin-right: 10px;
+    color: #808080;
+}
+
+h1{
+    font-size: 80px;
+}
+
+.main-content{
+    flex-grow: 1;
+}
+
+button{
+    cursor: pointer;
+    border: 2px solid #000000;
+    padding: 3px 8px 3px 8px;
+}
+
+footer{
+    flex-grow: 1;
+}
