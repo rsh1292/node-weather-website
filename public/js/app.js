@@ -1,4 +1,3 @@
-console.log("file loaded");
 const geocode = (address,callback) => {
     const url = `http://api.weatherstack.com/current?access_key=394fa331396ef380709e742bad6d2238&query=${address}`;
 try{
