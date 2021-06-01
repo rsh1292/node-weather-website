@@ -1,18 +1,21 @@
 const geocode = (address,callback) => {
-    const url = `http://api.weatherstack.com/current?access_key=394fa331396ef380709e742bad6d2238&query=${address}`;
+    //const url = `https://api.weatherstack.com/current?access_key=394fa331396ef380709e742bad6d2238&query=${address}`;
+    const url = `/weather?address=${address}`;
 try{
     fetch(url)
     .then(res=>{
+
         if(res.status===200){
         res.json().then(resp=>{
-            if(resp.current){
+            if(resp.address){
             callback(undefined,resp);
         }else{
-        throw new Error(resp.error.info);
+        throw new Error(resp.err);
            }
         })
         .catch(err=>callback(err,undefined));
-    }else{
+    }
+    else{
          throw new Error(res.statusText);
         }
 
@@ -41,8 +44,8 @@ weatherform.addEventListener("submit",(e)=>{
                 messageOne.innerHTML = `<span style="color:red">${err}</span>`;
                 messageTwo.textContent = '';
             }else{
-                messageOne.textContent = `Location : ${resp.location.name}`;
-                messageTwo.textContent = `Location : ${resp.current.weather_descriptions[0]}`;
+                messageOne.textContent = `Location : ${resp.place}`;
+                messageTwo.textContent = `Location : ${resp.forecast}`;
             }
         });
     }else{

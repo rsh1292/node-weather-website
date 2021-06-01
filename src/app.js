@@ -40,16 +40,17 @@ app.get("/help", (req, res) => {
 });
 
 app.get("/weather", (req, res) => {
+  console.log(req.query);
   if (!req.query.address) {
-    return res.send('<p style="color:red">Please enter address!</p>');
+    return res.send('Please enter address!');
   }
   geocode(req.query.address, (err, data) => {
     if (err) {
-      return res.send(`<p style="color:red">${err}</p>`);
+      return res.send({err});
     } else {
       forecast(data.latitude, data.longitude, (err, forecastData) => {
         if (err) {
-          return res.send(`<p style="color:red">${err}</p>`);
+          return res.send(err);
         } else {
           return res.send({
             address: req.query.address,
